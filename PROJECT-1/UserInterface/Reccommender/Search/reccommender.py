@@ -22,8 +22,8 @@ class Reccomender():
         self.__similarity=cosine_similarity(self.__vector)
 
         print('cosine smilarity calculated..')
-    def GetTopMoviesId(self,id):
-            index=self.__movie_data[self.__movie_data['movie_id']==id].index[0]
+    def GetTopMoviesId(self,name):
+            index=self.__movie_data[self.__movie_data['title']==name].index[0]
             distance=self.__similarity[index]
             movielist=sorted(list(enumerate(distance)),reverse=True,key=(lambda x:x[1]))[0:15]
             

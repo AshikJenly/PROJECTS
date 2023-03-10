@@ -29,15 +29,18 @@
  <div class="container" >
         <div class="row">
             {%for movie in movies%}
-          <div class="col-lg-4 col-sm-8" >
+          <div class="col-lg-4 col-sm-8 col-md-6" >
             <!--  column -1 for movie-->
               
                 <div class="card" style="width: 20rem;">
                    <img src="{% static 'images/avatar.jpeg' %}" class="card-img-top" alt="...">
                   <div class="card-body">
-                   <h5 class="card-title">Card title</h5>
-                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   <a href="#" class="btn btn-primary">Go somewhere</a>
+                   <h4 class="card-title">{{movie.name}}</h4>
+                   <h6 class="card-title">{{movie.vote}}</h6>
+                   <h6 class="card-title">{{movie.runtime}}</h6>
+
+                   <p class="card-text">The movie {{movie.name}} was released on {{movie.releaseDate}} ,Tagline story "{{movie.tagline}}".</p>
+                   <a href="#" target="_blank" class="btn btn-primary">Go somewhere</a>
                   </div>
             </div>
             <!--  column -1 for movie / -->
