@@ -32,7 +32,7 @@ class Reccomender():
                 # print(self.__movie_data.iloc[i[0]].title)
                 movie_id_list.append(self.__movie_data.iloc[i[0]].movie_id)
             return movie_id_list
-#R1=Reccomender()
-#R1.GetTopMovies(19995)
+    
+    
 
 

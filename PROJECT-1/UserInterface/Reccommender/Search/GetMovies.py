@@ -29,9 +29,19 @@ class AMovie():
             
             print('error')
             
-    
-
-
+class GetFirst():
+    def __init__(self):
+        df=pd.read_csv('static/DATASETS/movies.csv',index_col=0)
+        df.reset_index(inplace=True)
+        df=df[df['vote_count']>=1000]
+        vc_list=df.sort_values(by='vote_count',ascending=False)[0:18]
+        self.__top_f=df.sort_values(by='vote_average',ascending=False)[0:15]
+    def getTop15Ids(self):
+        ids=[]
+        for i in self.__top_f['id']:
+            ids.append(i)
+        return ids
+        
 class GetMovies():
 
     """Gets list of movie ids and return list of movie objects"""

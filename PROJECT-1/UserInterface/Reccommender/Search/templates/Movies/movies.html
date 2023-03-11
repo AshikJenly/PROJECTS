@@ -13,33 +13,59 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<style>
+    
+      /* For screens smaller than 768px (e.g. smartphones) */
+  @media only screen and (max-width: 1200px) {
+    .cnt {
+      /* margin-left: 10%;
+      margin-right: 50%; */
+   margin: 0 auto;
+   
+    }
+    .cnt{
+      margin-bottom: 2rem;
+    }
+  }
+  
+  
+</style>
 </head>
-<body>
+<body style="height: 100%; background-color:whitesmoke;">
    
     <!-- --------------navingation area---------------- -->
-    <nav>
+    <nav style="margin-bottom: 5rem;">
         {%include 'Movies/movie_nav.html'%}
     </nav>
 
     <!-- --------------navingation area---------------- -->
 
       
+
+    <!--  -->
+ <div class="container" style="border-top:2rem ">
+
+    {%if ishome%}
+    {%include 'Movies/movie_carosel.html'%}
+    {%endif%}
+    <!--  -->
+ </div>
+
 <!-- recommended movie cards -->   
- <div class="container" >
+ <div class="container " style="margin-top: 2rem;">
         <div class="row">
             {%for movie in movies%}
           <div class="col-lg-4 col-sm-8 col-md-6" >
             <!--  column -1 for movie-->
               
-                <div class="card" style="width: 20rem;">
+                <div class="card cnt" style="width: 20rem;">
                    <img src="{% static 'images/avatar.jpeg' %}" class="card-img-top" alt="...">
                   <div class="card-body">
                    <h4 class="card-title">{{movie.name}}</h4>
                    <h6 class="card-title">{{movie.vote}}</h6>
                    <h6 class="card-title">{{movie.runtime}}</h6>
 
-                   <p class="card-text">The movie {{movie.name}} was released on {{movie.releaseDate}} ,Tagline story "{{movie.tagline}}".</p>
+                   <p class="card-text">{{movie.name}} was released on {{movie.releaseDate}} ,Tagline story "{{movie.tagline}}".</p>
                    <a href="#" target="_blank" class="btn btn-primary">Go somewhere</a>
                   </div>
             </div>
@@ -49,6 +75,20 @@
         </div>
       </div>
         <!-- recommended movie cards -->
+
+
+        <div class="container" style="border-top:2rem;margin-bottom: 1rem;">
+
+          {%if ishome == False%}
+          {%include 'Movies/movie_carosel.html'%}
+          {%endif%}
+          <!--  -->
+       </div>
+        <!-- Movie Foot  -->
+        
+        {%include 'Movies/movie_foot.html' %}
+     
+        <!-- Movie Foot  -->
 
 </body>
 </html>
