@@ -31,7 +31,6 @@ class MailVerify:
 
 
 # m1=MailVerify()
-# x=m1.verifyOtp('jenlyashik@gmail.com')
+# x=m1.verifyOtp('jenlyashik@gmail.com',"ashik")
 # print(x)
-# connection.close()
 
