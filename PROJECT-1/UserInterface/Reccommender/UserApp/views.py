@@ -52,7 +52,7 @@ def Register_page_view(requests):
         else:
             uf.values(fname=fname,lname=lname,email=email,college=college,password=password)
             otp_gen=mail_check.verifyOtp(email=email,name=(fname+" "+lname))
-            print(otp_gen)
+            
             uf.set_otp(otp=otp_gen)
 
             return render(requests,'front/home.html',{'log':False,'reg':False,'otp':True,'email':email})
