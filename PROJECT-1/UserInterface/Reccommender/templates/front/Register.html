@@ -1,0 +1,93 @@
+
+<style>
+
+    .cnt-c{
+       
+        margin-top:3rem;
+        margin-left:auto;
+        margin-bottom: 4rem;
+        margin-right:auto ;
+        width: 30rem;
+    }
+    .card-title{
+    
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn{
+        width: 15rem;
+        height: 3rem;
+        margin-top: 1rem;
+        margin-left: 6rem;
+        background-color: rgb(11, 117, 41);
+        color: black;
+        font-weight: bolder;
+        font-size: larger;
+        margin-bottom: 2rem;
+        border-color: rgb(11, 117, 41);
+    }
+    .btn:hover{
+        border-color: rgb(11, 117, 41);
+        color: rgb(11, 117, 41);
+    }
+    .lay-c{
+        border-color: black;
+        border-radius: 1rem;
+        
+    }
+    .login:hover{
+        font-weight: bolder;
+
+    }
+   
+    </style>
+    <div class="container card cnt-c lay-c" >
+        <section>
+        <h5 class="card-title card-title">Register</h5>
+        </section>
+        <div class="row">
+          <div class="col-sm">
+            
+            <form method="post">
+            {%csrf_token%}
+            <!-- fname -->
+                <div class="form-group">
+                  
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input  class="form-control lay-c"  name="fname" required>
+                </div>
+                <!-- lname -->
+                <div class="form-group">
+                     <label for="exampleInputEmail1">Last Name</label>
+                     <input  class="form-control lay-c"  name="lname">
+                </div>
+                <!-- College -->
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input  class="form-control lay-c"  name="cname">
+               </div>
+                <!-- email -->
+                <div class="form-group">             
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control lay-c" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                
+                 </div>
+               
+
+                <button type="submit" class="btn lay-c">Submit</button>
+              </form>
+            
+            <div>
+                <p>Already Registered ?</p>
+               
+                <a class="login" href="http://127.0.0.1:8000/">Login</a>
+           
+            </div>
+    
+    
+          </div>
+        </div>
+      </div>
