@@ -1,11 +1,12 @@
 from .models import UserInfoDB1
-
+from .DataSecurity import decryption
 
 def checkLogin(email,password):
     objs=UserInfoDB1.objects.all()
     for obj in objs:
-        if obj.email==email:
-            if obj.password==password:
+        key=obj.key_enc
+        if decryption(obj.email,key)==email:
+            if decryption(obj.password,key)==password:
                 return None,True
             else:
                 return "Wrong Password ,Please try again!",False
@@ -15,7 +16,8 @@ def checkLogin(email,password):
 def checkRegister(email):
     objs=UserInfoDB1.objects.all()
     for obj in objs:
-        if obj.email==email:
+        key=obj.key_enc
+        if decryption(obj.email,key)==email:
             return True
         
     return False    
