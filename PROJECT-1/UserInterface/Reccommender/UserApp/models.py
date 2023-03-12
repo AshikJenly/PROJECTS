@@ -3,18 +3,13 @@ from django.db import models
 
 
 # Create your models here.
-class UserInfo(models.Model):
-    fname= models.CharField(max_length=50)
-    lname= models.CharField(max_length=50)
-    email=models.EmailField()
+
+    
+class UserInfoDB1(models.Model):
+    fname= models.CharField(max_length=100)
+    lname= models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
     college=models.CharField(max_length=100)
     password=models.CharField(max_length=100)
-
-class UserInfoDB(models.Model):
-    fname= models.CharField(max_length=50)
-    lname= models.CharField(max_length=50)
-    email=models.EmailField()
-    college=models.CharField(max_length=100)
-    password=models.CharField(max_length=100)
-
+    key_enc=models.CharField(max_length=150)
     

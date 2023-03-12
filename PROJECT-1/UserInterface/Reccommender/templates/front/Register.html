@@ -68,13 +68,13 @@
     </style>
     <div class="container card cnt-c lay-c" >
         <h5 class="card-title card-title">Register</h5>
-       {%if wrong_otp%}
-       <h6 style="color: red;">Wrong OTP ,Please Retry</h6>
-        {%endif%}
+      
+       <h6 style="color: red;">{{Message}}</h6>
+       
        <div class="row">
           <div class="col-sm">
             
-            <form method="post">
+            <form method="post" name="reg_form">
             {%csrf_token%}
             <!-- fname -->
                 <div class="form-group">
