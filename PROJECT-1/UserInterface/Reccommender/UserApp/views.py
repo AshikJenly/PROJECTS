@@ -5,7 +5,7 @@ from .user_info import UserInfo
 from .verify_email import MailVerify
 from . import writeintoDb
 from .LoginCheck import checkLogin,checkRegister
-
+from . BASEURL import BASE_URL
 
 mail_check=MailVerify()
 uf=UserInfo()
@@ -19,23 +19,23 @@ def home_page_view(requests):
 
         if IsValid:
             requests.session['isLogin']=True
-            return redirect('http://127.0.0.1:8000/movies')#after database code ,render movie page
+            return redirect(BASE_URL+'movies')#after database code ,render movie page
         else:
-            return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,'Message':Message})#after database code ,render movie page
+            return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':True,'reg':False,'otp':False,'Message':Message})#after database code ,render movie page
 
     else:
         data = requests.GET.get('data')
         if data!=None:
-            return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,'Message':data})
+            return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':True,'reg':False,'otp':False,'Message':data})
         else:
-            return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,'Message':""})
+            return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':True,'reg':False,'otp':False,'Message':""})
 
 
 
 def Register_page_view(requests):
     if requests.method=="GET":
 
-        return render(requests,'front/home.html',{'log':False,'reg':True,'otp':False,'Message':""})
+        return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':False,'reg':True,'otp':False,'Message':""})
     
     elif requests.method=='POST':
 
@@ -49,14 +49,14 @@ def Register_page_view(requests):
         isExist=checkRegister(email=email)
         if isExist:
 
-            return render(requests,'front/home.html',{'log':False,'reg':True,'otp':False,"Message":"Mail id has been registered already!"})
+            return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':False,'reg':True,'otp':False,"Message":"Mail id has been registered already!"})
         else:
             uf.values(fname=fname,lname=lname,email=email,college=college,password=password)
             otp_gen=mail_check.verifyOtp(email=email,name=(fname+" "+lname))
             
             uf.set_otp(otp=otp_gen)
 
-            return render(requests,'front/home.html',{'log':False,'reg':False,'otp':True,'email':email})
+            return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':False,'reg':False,'otp':True,'email':email})
     
 def Otpview(requests):
     if requests.method == 'POST':
@@ -66,15 +66,23 @@ def Otpview(requests):
             if uf.check_otp(otp):
                 print('Otp verified')
                 writeintoDb.writeIntoDB(uf)
-                return HttpResponseRedirect(redirect_to='http://127.0.0.1:8000/')
+                return HttpResponseRedirect(redirect_to=BASE_URL)
                 # return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False})
             else :
-                url = 'http://127.0.0.1:8000/' + '?data=' + "Wrong OTP ,Please Try again!"
+                url = BASE_URL + '?data=' + "Wrong OTP ,Please Try again!"
                 return HttpResponseRedirect(redirect_to=url)
 
                 # return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,"Message":"Wrong OTP ,Please Try again!"})
             
         except:
             print("Error occured in redirecting")
-            url ='http://127.0.0.1:8000/' + '?data=' + ""
+            url =BASE_URL + '?data=' + ""
             return HttpResponseRedirect(redirect_to=url)
+
+
+def logout(request):
+
+    request.session['isLogin']=False
+    print('log out function')
+    # return redirect('http://127.0.0.1:8000')
+    return redirect(BASE_URL+'movies')
