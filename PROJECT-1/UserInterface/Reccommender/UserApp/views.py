@@ -18,7 +18,8 @@ def home_page_view(requests):
         Message,IsValid=checkLogin(email=email,password=password)
 
         if IsValid:
-            return HttpResponseRedirect('http://127.0.0.1:8000/movies')#after database code ,render movie page
+            requests.session['isLogin']=True
+            return redirect('http://127.0.0.1:8000/movies')#after database code ,render movie page
         else:
             return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,'Message':Message})#after database code ,render movie page
 
