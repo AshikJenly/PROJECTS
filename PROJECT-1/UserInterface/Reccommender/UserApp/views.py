@@ -7,7 +7,7 @@ from . import writeintoDb
 from .LoginCheck import checkLogin,checkRegister
 from . BASEURL import BASE_URL
 
-mail_check=MailVerify()
+# mail_check=MailVerify()
 uf=UserInfo()
 
 # Create your views here.
@@ -52,6 +52,7 @@ def Register_page_view(requests):
             return render(requests,'front/home.html',{'BASE_URL':BASE_URL,'log':False,'reg':True,'otp':False,"Message":"Mail id has been registered already!"})
         else:
             uf.values(fname=fname,lname=lname,email=email,college=college,password=password)
+            mail_check=MailVerify()
             otp_gen=mail_check.verifyOtp(email=email,name=(fname+" "+lname))
             
             uf.set_otp(otp=otp_gen)
@@ -67,23 +68,25 @@ def Otpview(requests):
                 print('Otp verified')
                 writeintoDb.writeIntoDB(uf)
                 return HttpResponseRedirect(redirect_to=BASE_URL)
-                # return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False})
             else :
                 url = BASE_URL + '?data=' + "Wrong OTP ,Please Try again!"
                 return HttpResponseRedirect(redirect_to=url)
 
-                # return render(requests,'front/home.html',{'log':True,'reg':False,'otp':False,"Message":"Wrong OTP ,Please Try again!"})
             
         except:
             print("Error occured in redirecting")
             url =BASE_URL + '?data=' + ""
             return HttpResponseRedirect(redirect_to=url)
     else:
+<<<<<<< HEAD
         return redirect(BASE_URL)
+=======
+         requests.session['Message']=""
+         return redirect(BASE_URL)
+>>>>>>> fbeae92ef03beaa5f52dfef444793ae4148eba43
 
 def logout(request):
 
     request.session['isLogin']=False
     print('log out function')
-    # return redirect('http://127.0.0.1:8000')
     return redirect(BASE_URL+'movies')

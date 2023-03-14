@@ -13,11 +13,23 @@
   .logo-t:hover{
       color:red;
   }
+
+.nav-link{
+    color: white;
+    font-size: 1.1rem;
+}
+@media only screen and (max-width: 980px)  {
+    .nav-item{
+        margin-left: 50%;
+        margin-right: 50%;
+       
+    }
+}
 </style>
 
 
 <nav class="navbar  navbar-expand-lg navbar-dark fixed-top"  >
-    <a class="navbar-brand logo-t" href='#'>JENFLIX</a>
+    <a class="navbar-brand logo-t" href="#">JENFLIX</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,12 +40,20 @@
           <a class="nav-link" href={{BASE_URL}}>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href={{BASE_URL}}movies>Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href={{BASE_URL}}logout>Logout</a>
+          <a class="nav-link" href={{BASE_URL}}movies>Main</a>
         </li>
        
+        <li class="nav-item">
+          <a class="nav-link" href="#for_href_about">About</a> 
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#for_href_contact">Contact</a> 
+      </li>
+
+      <li class="nav-item" style="background-color: rgb(228, 46, 46);border-radius: 1rem;">
+        <a class="nav-link" href={{BASE_URL}}logout>Logout</a>
+      </li>
+     
       </ul>
     <div class="container">
       <form method="post">
@@ -47,6 +67,7 @@
           </div>
         </div>
       </form>
+     
     </div>
     </div>
   </nav>
