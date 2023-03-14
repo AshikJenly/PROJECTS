@@ -78,7 +78,8 @@ def Otpview(requests):
             print("Error occured in redirecting")
             url =BASE_URL + '?data=' + ""
             return HttpResponseRedirect(redirect_to=url)
-
+    else:
+        return redirect(BASE_URL)
 
 def logout(request):
 
