@@ -30,7 +30,6 @@ def Movie_Page_view(request):
                 context={'movies':movies,'ishome':True,'BASE_URL':BASE_URL}
                 return render(request,"Movies/movies.html",context)
         else:
-            
             return redirect(BASE_URL)
             # return render(request,'front/home.html',{'log':True,'reg':False,'otp':False,'Message':"You have to login first!"})#after database code ,render movie page
     except:
