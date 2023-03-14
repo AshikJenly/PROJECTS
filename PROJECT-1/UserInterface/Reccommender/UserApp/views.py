@@ -78,12 +78,7 @@ def Otpview(requests):
             url =BASE_URL + '?data=' + ""
             return HttpResponseRedirect(redirect_to=url)
     else:
-<<<<<<< HEAD
         return redirect(BASE_URL)
-=======
-         requests.session['Message']=""
-         return redirect(BASE_URL)
->>>>>>> fbeae92ef03beaa5f52dfef444793ae4148eba43
 
 def logout(request):
 
