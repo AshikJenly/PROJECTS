@@ -2,11 +2,8 @@
 import pandas as pd
 import openai
 from pathlib import Path
-# API_KEY="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"
-main_k = "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"
-# API_KEY="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"
-# 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
-openai.api_key=main_k
+
+openai.api_key="API-KEY"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import PyPDF2
